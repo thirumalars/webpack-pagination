@@ -1,37 +1,34 @@
 
-alert("hello")
-
 let userDetails = [];
 
 function getvalue() {
     let names, email, number;
-
+    alert("hi")
     names = document.getElementById("name").value;
     email = document.getElementById("email").value;
     number = document.getElementById("number").value;
 
     let details =
     {
-        username:names,
-        email:email,
-        number:number
+        username: names,
+        email: email,
+        number: number
     }
 
     userDetails.push(details);
+    let displayData=getTableList(userDetails);
+    console.log("user", displayData,userDetails);
+   document.getElementById("display").innerHTML = displayData;
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("number").value = "";
 
-    console.log("user",userDetails );
-
-    document.getElementById("name").value="";
-    document.getElementById("email").value="";
-    document.getElementById("number").value="";
-    
 }
 user();
-function user()
-{
+function user() {
     alert("hi");
-    let val=
-`
+    let val =
+        `
 <h1>Get Details</h1>
 
 <label>Name:</label>
@@ -43,7 +40,7 @@ function user()
 <label>Phone Number:</label>
 <input type="number" id="number" />
 
-<button onclick ="getvalue()"> Add Details</button>
+<button onclick = "this.getvalue"> Add Details</button>
  
 <div class="display-details">
     <table>
@@ -52,17 +49,8 @@ function user()
             <td>Email</td>
             <td>Phone Number</td>
         </tr>
-        <script>
-            <tr>`
-                userDetails.map((value,index)=>{
-                    alert("hh")
-                    {key=index}
-                    `<td> ${value.username}</td>`
-                    `<td> ${value.email}</td>`
-                    `<td> ${value.number}</td>
-                </tr>`
-            })
-     `       
+        <tbody id="display">
+        </tbody>   
     </table>
     </div>
 </div>
@@ -76,13 +64,24 @@ function user()
     <a href="#">6</a>
     <a href="#">&raquo;</a>
   </div>`
-  document.getElementById("demo").innerHTML=val;
-        }
+  console.log("d",document.getElementById("demo"));
+   document.getElementById("demo").innerHTML = (val);
+}
 
-function pagination()
-{
-    const pageLimit=10,dataLimit=5;
-    let currentPage=1;
+function getTableList(array) {
+    let list = ""
+    array.map((value, index) => {
+        list += `<tr>
+                <td> ${value.username}</td>
+                <td> ${value.email}</td>
+                <td> ${value.number}</td>
+            </tr>`
+    })
+    return list;
+}
+function pagination() {
+    const pageLimit = 10, dataLimit = 5;
+    let currentPage = 1;
 
 }
 const getPaginatedData = () => {
