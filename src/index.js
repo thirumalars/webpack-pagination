@@ -1,3 +1,5 @@
+import "./pagination.css";
+
 let userDetails = [];
     const pageLimit = 10, dataLimit = 5;
     let currentPage = 1, pages = 0;
