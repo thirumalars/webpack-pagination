@@ -14,7 +14,8 @@ module.exports = {
   module: {
     rules: [
       { test: /\.txt$/, use: "raw-loader" },
-      { test: /\.css$/, use: "css-loader" }
+      { test: /\.css$/, use: [ { loader:ExtractCssChunks.loader, options: { publicPath: "src/" } }, "css-loader" ] },
+      { test: /\.js$/, use: 'babel-loader' }
     ]
   },
   plugins: [
@@ -22,16 +23,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "src", "index.html")
     }),
-  new ExtractCssChunks( 
-    {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [ExtractCssChunks.loader, 'css-loader'],
-      },
-    ],
-  },
-    ),
-    
+    new ExtractCssChunks()    
   ]
 };
