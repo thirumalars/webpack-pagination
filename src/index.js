@@ -1,5 +1,7 @@
 import "./pagination.css";
 
+console.log("dsadadsasd");
+
 let userDetails = [];
     const pageLimit = 10, dataLimit = 5;
     let currentPage = 1, pages = 0;
@@ -22,6 +24,7 @@ let userDetails = [];
     }
 
     function getvalue() {
+        console.log("hi")
         let names, email, number;
         names = document.getElementById("name").value;
         email = document.getElementById("email").value;
@@ -96,3 +99,5 @@ let userDetails = [];
             document.getElementById("display").innerHTML = value;
   }
 }
+
+window.getvalue = getvalue;
